@@ -4,6 +4,10 @@ const express = require('express');
 const morgan = require('morgan');
 const Person = require('./models');
 const app = express();
+const path = require('path');
+
+
+app.use(express.static(path.resolve(__dirname, 'dist')));
 
 
 app.use(express.json());
@@ -13,6 +17,10 @@ morgan.token('post-data', (req) => {
   return req.method === 'POST' ? JSON.stringify(req.body) : '-';
 });
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-data'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
 
 app.get('/api/persons', (req, res, next) => {
   Person.find({})
