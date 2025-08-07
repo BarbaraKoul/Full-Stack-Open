@@ -1,7 +1,7 @@
 require('./utils');
 const express = require('express');
 const morgan = require('morgan');
-const Person = require('./models/phonebook');
+const Person = require('./models');
 const app = express();
 
 app.use(express.json());
