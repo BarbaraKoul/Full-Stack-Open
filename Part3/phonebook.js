@@ -1,4 +1,4 @@
-require('./utils/config');
+require('./utils');
 const express = require('express');
 const morgan = require('morgan');
 const Person = require('./models/phonebook');
