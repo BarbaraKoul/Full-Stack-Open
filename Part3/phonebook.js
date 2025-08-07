@@ -1,4 +1,4 @@
-require('./utils');
+
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
@@ -11,16 +11,13 @@ app.use(express.static(path.resolve(__dirname, 'dist')));
 
 
 app.use(express.json());
-app.use(express.static('build'));
+
 
 morgan.token('post-data', (req) => {
   return req.method === 'POST' ? JSON.stringify(req.body) : '-';
 });
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-data'));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
-});
 
 app.get('/api/persons', (req, res, next) => {
   Person.find({})
@@ -101,7 +98,13 @@ const errorHandler = (error, req, res, next) => {
   next(error);
 };
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
+
 app.use(errorHandler);
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
