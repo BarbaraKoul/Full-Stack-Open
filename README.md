@@ -2,4 +2,4 @@
 
 -Part 0-Fundamentals of Web Dev: there are 3 diagrams created with Mermaid-Syntax which depict the relationship between user, browser and server in traditional apps and SPA <br/>
 -Part 1-Introduction to React: Basics of creating a react app (3 examples):JSX, State Variables and Event Handlers <br/>
--Part 2-Communication with the Server: Rendering a collection, modules, Forms, npm, Axios and promises, Effect-hooks, getting/sending/altering data in server, styles in React apps <br/>
+-Part 2-Communication with the Server: Rendering a collection, modules, Forms, npm, Axios and promises, Effect-hooks, JSON server, getting/sending/altering data in server, styles in React apps <br/>
