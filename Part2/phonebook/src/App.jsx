@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import './index.css'
 import phoneService from './services/phones'
 
 const Filter=(props)=>{
@@ -50,6 +50,8 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber]= useState('')
   const [filter, setFilter]= useState('')
+  const [addition, setAddition]= useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const handleFilter=(event)=>{
     console.log(event.target.value)
@@ -61,6 +63,13 @@ const App = () => {
       phoneService.remove(id)
         .then(() => {
           setPersons(persons.filter(p => p.id !== id))
+          setAddition(`Deleted contact successfully`)
+          setTimeout(() => setAddition(null), 5000)
+        }).catch(error => {
+          setErrorMessage(
+            `Failed to delete contact: ${error.message}`
+          )
+          setTimeout(() => setErrorMessage(null), 5000)
         })
     }
   }
@@ -94,6 +103,23 @@ const App = () => {
             setPersons(persons.map(p => p.id !== existingPerson.id ? p : returnedPerson))
             setNewName('')
             setNewNumber('')
+            setAddition(`Added ${Object.name}`)
+            setErrorMessage(null)
+            setTimeout(()=>{
+              setAddition(null)
+            },5000)
+          }).catch(error => {
+            if (error.response && error.response.status === 404) {
+              setErrorMessage(
+                `Information of ${newPerson.name} has already been removed from server`
+              )
+              setPersons(persons.filter(p => p.id !== existingPerson.id))
+            } else {
+              setErrorMessage(
+                `Failed to update ${Object.name}: ${error.message}`
+              )
+            }
+            setTimeout(() => setErrorMessage(null), 5000)
           })
       }
     }
@@ -103,7 +129,17 @@ const App = () => {
         setPersons(persons.concat(response.data))
         setNewName('')
         setNewNumber('')
-      })
+      setAddition(`Added ${Object.name}`)
+      setErrorMessage(null)
+      setTimeout(()=>{
+              setAddition(null)
+            },5000)
+      }).catch(error => {
+          setErrorMessage(
+            `Failed to add ${Object.name}: ${error.message}`
+          )
+          setTimeout(() => setErrorMessage(null), 5000)
+        })
     }
   }
   
@@ -111,6 +147,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      {addition && <div className="message">{addition}</div>}
+      {errorMessage && <div className="error">{errorMessage}</div>}
           <Filter filter={filter} fun={handleFilter}/>
       <h2>add a new</h2>
           <PersonForm funSub={addToPhonebook} name={newName} number={newNumber} funName={handleName} funNumber={handleNumber}/>
