@@ -1,8 +1,10 @@
 require('./utils');
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const Person = require('./models');
 const app = express();
+
 
 app.use(express.json());
 app.use(express.static('build'));
