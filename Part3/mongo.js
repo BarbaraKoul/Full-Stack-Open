@@ -1,4 +1,4 @@
-// mongo.js
+
 const mongoose = require('mongoose');
 const args = process.argv;
 
