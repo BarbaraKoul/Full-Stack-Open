@@ -5,6 +5,10 @@ const morgan = require('morgan');
 const Person = require('./models');
 const app = express();
 const path = require('path');
+const cors = require('cors');
+
+
+app.use(cors());
 
 
 app.use(express.static(path.resolve(__dirname, 'dist')));
@@ -40,6 +44,7 @@ app.get('/api/persons/:id', (req, res, next) => {
 });
 
 app.post('/api/persons', async (req, res, next) => {
+
   const body = req.body;
 
   const existingPerson = await Person.findOne({ name: body.name });
