@@ -36,7 +36,7 @@ blogRouter.delete('/:id', authenticateToken, async (request, response) => {
   const blog = await Blog.findById(request.params.id)
   if (!blog) return response.status(404).json({ error: 'Blog not found' })
   
-  if (blog.user.toString() !== request.user._id.toString()) {
+  if (blog.user.toString() !== request.user.id.toString()) {
     return response.status(403).json({ error: 'Only the creator can delete a blog' })
   }
   
