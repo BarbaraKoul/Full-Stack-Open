@@ -1,7 +1,7 @@
 # Full Stack Open Seminar - University of Helsinki<br/>
 
 ## About <br/>
-This repository is created for the needs of Full-Stack-Open Seminar of University of Helsinki. The course covers MERN Stack topics from easy to advanced level, organized in 14 parts. Parts 0-5 are the core of the course, while every of the next parts is an extension of the core course. Inside each folder of this repository there are all the exercises of the course demanded for a full-point certificate. The course has as prerequisites solid/proficient knowledge of HTML, CSS and Javascript, how git and github work and basic concepts of programming. 
+This repository is created for the needs of Full-Stack-Open Seminar of University of Helsinki. The course covers MERN Stack topics from easy to advanced level, organized in 14 parts. Parts 0-5 are the core of the course, while every of the next parts is an extension of the core course. Inside each folder of this repository there are all the exercises of the course demanded for a full-point certificate. The course has as prerequisites solid knowledge of HTML, CSS and Javascript, how git and github work and basic concepts of programming. 
 
 ## Part 0 - Fundamentals of Web Development
 This part is an introduction of how web applications work. Through **Mermaid-Syntax diagrams** the relationship between user, browser and server is depicted. In addition, the evolution from traditional to modern SP applications is presented. Hence, the *3 exercises* include:<br/>
