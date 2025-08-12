@@ -1,7 +1,7 @@
 import axios from 'axios'
 const baseUrl = '/api/blogs'
 
-let token = null;
+let token = null
 
 const setToken = (newToken) => {
   token = `Bearer ${newToken}`
@@ -23,4 +23,4 @@ const create = async (newBlog) => {
 
 
 
-export default { getAll, setToken, create}
+export default { getAll, setToken, create }

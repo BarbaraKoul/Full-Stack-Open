@@ -1,9 +1,9 @@
 import axios from 'axios'
-const baseUrl = '/api/login' 
+const baseUrl = '/api/login'
 const login = async (credentials) => {
   try {
     const response = await axios.post(baseUrl, credentials)
-    return response.data 
+    return response.data
   } catch (error) {
     console.error('Login failed:', error.response?.data?.error || error.message)
     throw new Error(error.response?.data?.error || 'Login failed')

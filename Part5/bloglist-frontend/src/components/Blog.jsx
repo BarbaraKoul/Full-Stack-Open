@@ -1,8 +1,8 @@
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-const Blog = ({ blog, user, onLike, onDelete}) => {
-
+const Blog = ({ blog, user, onLike, onDelete }) => {
+  const [visible, setVisible] = useState(false)
 
   const blogStyle = {
     paddingTop: 10,
@@ -12,23 +12,21 @@ const Blog = ({ blog, user, onLike, onDelete}) => {
     marginBottom: 5
   }
 
-   if (!blog) {
+  if (!blog) {
     return <div>Blog data missing!</div>
   }
-  
-  const [visible, setVisible] = useState(false)
-  
-    const hideWhenVisible = { display: visible ? 'none' : '' }
-    const showWhenVisible = { display: visible ? '' : 'none' }
-  
-    const blogVisibility = () => {
-      setVisible(!visible)
-    }
+
+  const hideWhenVisible = { display: visible ? 'none' : '' }
+  const showWhenVisible = { display: visible ? '' : 'none' }
+  const blogVisibility = () => {
+    setVisible(!visible)
+  }
+
   return(<div style={blogStyle}>
     <div style={hideWhenVisible}>
       {blog.title} {blog.author}
       <button onClick={blogVisibility}>view</button>
-    </div> 
+    </div>
     <div style={showWhenVisible}>
       {blog.title} {blog.author}
       <button onClick={blogVisibility}>hide</button><br/>
