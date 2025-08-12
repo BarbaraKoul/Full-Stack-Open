@@ -52,7 +52,7 @@ const App = () => {
 useEffect(() => {
   const token = localStorage.getItem('token')
   if (token) {
-    const decoded = jwt.decode(token)
+    const decoded = JSON.parse(token)
     setUser(decoded)
   }
 }, [])
@@ -76,13 +76,14 @@ useEffect(() => {
       }
   }
 
-   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-    }
-  }, [])
+  useEffect(() => {
+  const loggedUserJSON = window.localStorage.getItem('loggedBlogUser')
+  if (loggedUserJSON) {
+    const user = JSON.parse(loggedUserJSON)
+    setUser(user)
+    blogService.setToken(user.token)
+  }
+}, [])
 
    const handleLogout = () => {
     window.localStorage.removeItem('loggedBlogUser')
@@ -158,11 +159,13 @@ useEffect(() => {
     const Blog={
       title: title,
       author: author,
-      url: url
+      url: url,
+      likes:0
     }
 
   const success = await addBlog(Blog);
   if (success) {
+    setBlogs([...blogs, response.data])
     setTitle('')
     setAuthor('')
     setUrl('')
@@ -214,7 +217,7 @@ useEffect(() => {
         <BlogForm handleNewBlog={handleNewBlog} author={author} url={url} title={title} setAuthor={setAuthor} setTitle={setTitle} setUrl={setUrl}/>
       </Togglable>
       {blogs.sort(comparison).map(blog =>
-        <Blog key={blog.id} blog={blog} user={user}  onLike={() => handleLike(blog)} onDelete={()=>handleDelete(blog.id)}/>
+        <Blog key={blog?.id} blog={blog} user={user}  onLike={() => handleLike(blog)} onDelete={()=>handleDelete(blog?.id)}/>
       )}
     </div>
   )

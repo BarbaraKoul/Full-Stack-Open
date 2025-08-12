@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import {useState} from 'react'
 
 const Blog = ({ blog, user, onLike, onDelete}) => {
@@ -12,6 +12,10 @@ const Blog = ({ blog, user, onLike, onDelete}) => {
     marginBottom: 5
   }
 
+   if (!blog) {
+    return <div>Blog data missing!</div>
+  }
+  
   const [visible, setVisible] = useState(false)
   
     const hideWhenVisible = { display: visible ? 'none' : '' }
