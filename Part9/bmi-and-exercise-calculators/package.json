@@ -8,13 +8,15 @@
     "calculateBmi": "ts-node bmiCalculator.ts",
     "calculateExercises": "ts-node exerciseCalculator.ts",
     "start": "ts-node index.ts",
-    "dev": "nodemon index.ts"
+    "dev": "nodemon index.ts",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
