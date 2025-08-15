@@ -23,3 +23,6 @@ This part is focused on the backend of web Applications, using **NodeJS** and **
 
 ## Part 5 - Testing React apps
 In this part we implement the frontend of a login page and we first use **Local Storage**. We learn about **children components** and **Prop-Types**. We test our bloglist app about its frontend. **Debugging**, **snapshot tests**, **E2E testing(Playwright and Cypress).**
+
+## Part 6 - Advanced State Management
+This part of the course focuses on how we manage **states** in a React applications. So far, we used **useState hook** to manage the changes in the application's state, even though this is not the optimal way, especially when apps are getting more complicated. Therefore, we first learned about **Flux architecture** and we used **Redux** library to face state management at its whole. That's why we learned about **store**, **actions** and **reducers**. We implemented **uncontrolled forms** and we simplified our App.jsx component by implementing **action creators** to diverse the actions' types and forms from components. In other words, app's state is independent from the frontend. We also used the **Redux Toolkit** to combine reducers and finally we connected the backend (JSON Server) with thw frontend thanks to axios and **Redux Thunk** library. Finally, we learned about **React-Query library**, another way to manage applications' states. 
