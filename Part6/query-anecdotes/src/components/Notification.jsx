@@ -1,18 +1,13 @@
-const Notification = () => {
-  const style = {
-    border: 'solid',
-    padding: 10,
-    borderWidth: 1,
-    marginBottom: 5
-  }
-  
-  if (true) return null
+import { useNotification } from './notContext'
 
-  return (
-    <div style={style}>
-      
-    </div>
-  )
+const Notification = () => {
+  const style= {
+    padding: 10,
+    border: 'solid',
+    borderwidth: 1
+  }
+  const [notification] = useNotification()
+  return notification && <div style={style}>{notification}</div>
 }
 
 export default Notification
