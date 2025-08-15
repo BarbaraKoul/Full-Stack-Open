@@ -21,7 +21,7 @@ const parseArguments = (args: string[]): BmiValues => {
   }
 }
 
-const calculateBmi = (h:number, w:number): string => {
+export const calculateBmi = (h:number, w:number): string => {
     const BMI = (10000*w)/(h*h)
     if(BMI<18.5){
         return 'Underweight'
@@ -37,7 +37,8 @@ const calculateBmi = (h:number, w:number): string => {
     }
 }
 
-try{
+if(require.main === module) {
+  try{
     const { value1, value2 } = parseArguments(process.argv)
     console.log(calculateBmi(value1, value2))
 } 
@@ -47,4 +48,5 @@ catch (error: unknown) {
     errorMessage += error.message;
   }
   console.log(errorMessage);
+}
 }
