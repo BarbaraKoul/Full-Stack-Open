@@ -33,7 +33,10 @@ const App=(): JSX.Element => {
       visibility: visibility as Visibility,
       comment: comment
       }
-      setDiary(diary.concat(diaryToAdd));
+      diaryService.createDiary(diaryToAdd).then(data =>
+        setDiary(diary.concat(data))
+      )
+      
       setVisibility('');
       setComment('');
       setWeather('');

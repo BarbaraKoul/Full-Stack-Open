@@ -10,4 +10,10 @@ const getAll= async() => {
     return data;
 };
 
-export default { getAll };
+const createDiary=async (object: Diaries) => {
+     return axios
+    .post<Diaries>(baseUrl, object)
+    .then(response => response.data)
+}
+
+export default { getAll, createDiary };
