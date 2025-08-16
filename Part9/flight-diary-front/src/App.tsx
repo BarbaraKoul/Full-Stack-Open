@@ -35,7 +35,7 @@ const App=(): JSX.Element => {
       }
       diaryService.createDiary(diaryToAdd).then(data =>
         setDiary(diary.concat(data))
-      )
+      );
       
       setVisibility('');
       setComment('');
