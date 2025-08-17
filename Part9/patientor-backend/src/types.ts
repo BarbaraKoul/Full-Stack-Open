@@ -1,4 +1,4 @@
-export interface Entry {
+export interface BaseEntry {
   id: string;
   date: string;
   type: string;
@@ -34,3 +34,35 @@ export enum Gender {
 
 
 export type NonSensitivePatient = Omit<PatientEntry, 'ssn' | 'entries'>
+
+export enum HealthCheckRating {
+  "Healthy" = 0,
+  "LowRisk" = 1,
+  "HighRisk" = 2,
+  "CriticalRisk" = 3
+}
+
+export interface Discharge {
+  date: string
+  criteria: string
+}
+
+interface HealthCheckEntry extends BaseEntry {
+  type: "HealthCheck";
+  healthCheckRating: HealthCheckRating;
+}
+
+interface OccupationalHealthcareEntry extends BaseEntry {
+  type: "OccupationalHealthcare";
+  employerName: string;
+}
+
+interface HospitalEntry extends BaseEntry {
+  type: "Hospital";
+  discharge: Discharge;
+}
+
+export type Entry =
+  | HospitalEntry
+  | OccupationalHealthcareEntry
+  | HealthCheckEntry;
