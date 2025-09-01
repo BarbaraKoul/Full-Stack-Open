@@ -1,5 +1,4 @@
-```
-    mermaid
+
 
    ---
 ### CI/CD Tools for C++
@@ -28,5 +27,4 @@ A **self-hosted** environment provides **complete control** and **security** ove
 
 A **cloud-hosted** environment, like **GitHub Actions**, is easier to set up and maintain, allowing the team to focus on development. It also offers **flexibility** and **scalability**, as you can easily adjust computing resources based on project needs.
 
-To make an informed decision, you would need to consider the project's **security requirements**, your available **budget**, the team's **experience** with infrastructure management, and the overall **complexity** of the build processes.
-```
+To make an informed decision, you would need to consider the project's **security requirements**, your available **budget**, the team's **experience** with infrastructure management, and the overall **complexity** of the build processe
