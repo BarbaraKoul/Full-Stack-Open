@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {
   BrowserRouter as Router,
-  Routes, Route, Link, useParams
+  Routes, Route, Link, useParams, useNavigate
 } from 'react-router-dom'
 
 const Anecdote = ({anecdotes}) => {
@@ -63,6 +63,7 @@ const CreateNew = (props) => {
   const [content, setContent] = useState('')
   const [author, setAuthor] = useState('')
   const [info, setInfo] = useState('')
+  const navigate = useNavigate()
 
 
   const handleSubmit = (e) => {
@@ -73,6 +74,11 @@ const CreateNew = (props) => {
       info,
       votes: 0
     })
+    setAuthor('')
+    setInfo('')
+    setContent('')
+    navigate('/anecdotes')
+    
   }
 
   return (
@@ -91,7 +97,8 @@ const CreateNew = (props) => {
           url for more info
           <input name='info' value={info} onChange={(e)=> setInfo(e.target.value)} />
         </div>
-        <button>create</button>
+        <button type="submit">
+          create</button>
       </form>
     </div>
   )
