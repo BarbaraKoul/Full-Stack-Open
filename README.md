@@ -27,6 +27,23 @@ In this part we implement the frontend of a login page and we first use **Local 
 ## Part 6 - Advanced State Management
 This part of the course focuses on how we manage **states** in a React applications. So far, we used **useState hook** to manage the changes in the application's state, even though this is not the optimal way, especially when apps are getting more complicated. Therefore, we first learned about **Flux architecture** and we used **Redux** library to face state management at its whole. That's why we learned about **store**, **actions** and **reducers**. We implemented **uncontrolled forms** and we simplified our App.jsx component by implementing **action creators** to diverse the actions' types and forms from components. In other words, app's state is independent from the frontend. We also used the **Redux Toolkit** to combine reducers and finally we connected the backend (JSON Server) with thw frontend thanks to axios and **Redux Thunk** library. Finally, we learned about **React-Query library**, another way to manage applications' states. 
 
+## Part 7 - React Router, Custom Hooks, styling app with css and Webpack
+This part of the course extends our knowledge of React applications by introducing **routing**, **custom hooks**, **styling options**, and **Redux** for state management.
+We first learned how to use **React Router** to enable navigation between multiple views within a single-page application. By setting up `Routes`, `Route`, `Link`, and `useNavigate`, we implemented client-side navigation and dynamic route matching with parameters. Next, we created a **custom hook (`useField`)** to simplify form field management. This hook handles the input state and provides a convenient `reset` function to clear fields. By using hooks, we were able to write more reusable and maintainable form logic. We then explored different **styling approaches** in React applications, including traditional CSS, inline styles, and third-party UI libraries. This gave us a better understanding of how to improve the appearance and user experience of our apps.
+
+Finally, we used **Redux** for managing global state more efficiently. With the help of **Redux Toolkit**, we created:
+- **Slices** (e.g., `anecdotesSlice`, `notificationSlice`) to manage different parts of the application state.
+- **Reducers and actions** to handle state transitions.
+- **Thunks** for asynchronous logic (e.g., timeouts in notifications).
+- A **centralized store** that makes state accessible across the entire app via the `Provider`.
+
+In practice, we implemented:
+- A global **notification system** with time-based clearing.
+- A centralized **anecdotes state**, including actions for creating new anecdotes and voting.
+- Navigation between views (`/anecdotes`, `/create`, `/about`) with React Router.
+- Reusable form logic with a custom hook and reset button.
+
+
 ## Part 9 - TypeScript
 This part is an extension of the core course. After being familiarized with the **background**, **pros** and **cons** of TypeScript, we learn the **syntax** and **properties** of TypeScript, like **type narrowing** and **assertion**, by creating simple calculator applications. We combine **TypeScript with express** to set up servers and API calls. For this reason we learn about **utility types**, **validation**, **type guards** and the schema validation library **zod**. Also, we combine **TypeScript with React** to create the frontend of an application, like we did with pure Javascript in the core course. In the end of this part we buil the **Patientor** application, which shows a patient list, enables adding patients of various types and patient entries. For styling, we also use **MaterialUI**. 
 
