@@ -8,8 +8,9 @@ import {
 } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { useField } from "./hooks"
-import { addAnecdote, voteAnecdote } from "./redux/anecdotesSlice"
-import { showNotification } from "./redux/notificationSlice"
+import { addAnecdote, voteAnecdote } from "../redux/anecdotesSlice"
+import { showNotification } from "../redux/notificationSlice"
+import { Table, Form, Button, Navbar, Nav } from 'react-bootstrap'
 
 const Anecdote = ({ anecdotes }) => {
   const id = useParams().id
@@ -32,31 +33,42 @@ const Anecdote = ({ anecdotes }) => {
 const Menu = () => {
   const padding = { paddingRight: 5 }
   return (
-    <div>
-      <Link style={padding} to="/anecdotes">
-        anecdotes
-      </Link>
-      <Link style={padding} to="/create">
-        create new
-      </Link>
-      <Link style={padding} to="/about">
-        about
-      </Link>
-    </div>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="me-auto">
+      <Nav.Link href="#" as="span">
+        <Link style={padding} to="/anecdotes">anecdotes</Link>
+      </Nav.Link>
+      <Nav.Link href="#" as="span">
+        <Link style={padding} to="/create">create new</Link>
+      </Nav.Link>
+      <Nav.Link href="#" as="span">
+        <Link style={padding} to="/about">about</Link>
+      </Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
   )
 }
 
 const AnecdoteList = ({ anecdotes, onVote }) => (
   <div>
     <h2>Anecdotes</h2>
-    <ul>
-      {anecdotes.map((anecdote) => (
-        <li key={anecdote.id}>
-          <Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link>{" "}
-          <button onClick={() => onVote(anecdote.id)}>vote</button>
-        </li>
+    <Table striped>
+      <tbody>
+        {anecdotes.map((anecdote) => (
+        <tr key={anecdote.id}>
+          <td>
+            <Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link>{" "}
+          </td>
+          <td>
+            <button onClick={() => onVote(anecdote.id)}>vote</button>
+          </td>
+        </tr>
       ))}
-    </ul>
+      </tbody>
+    </Table>
   </div>
 )
 
@@ -124,32 +136,32 @@ const CreateNew = () => {
   return (
     <div>
       <h2>create a new anecdote</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          content
-          <input
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>content</Form.Label>
+          <Form.Control
             type={content.type}
             value={content.value}
             onChange={content.onChange}
           />
-        </div>
-        <div>
-          author
-          <input
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>author</Form.Label>
+          <Form.Control
             type={author.type}
             value={author.value}
             onChange={author.onChange}
           />
-        </div>
-        <div>
-          url for more info
-          <input type={info.type} value={info.value} onChange={info.onChange} />
-        </div>
-        <button type="submit">create</button>
-        <button type="button" onClick={handleReset}>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>url for more info</Form.Label>
+          <Form.Control type={info.type} value={info.value} onChange={info.onChange} />
+        </Form.Group>
+        <Button type="submit">create</Button>
+        <Button type="button" onClick={handleReset}>
           reset
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   )
 }
@@ -169,10 +181,10 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div className="container">
         <h1>Software anecdotes</h1>
         <Menu />
-        {notification && <div>{notification}</div>}
+        {notification && <Alert variant="success">{notification}</Alert>}
         <Routes>
           <Route
             path="/anecdotes/:id"
