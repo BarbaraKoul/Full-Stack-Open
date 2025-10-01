@@ -57,7 +57,7 @@ const Authors = (props) => {
       await editAuthor({ 
         variables: { 
           name, 
-          setBornTo: parseInt(born)  // Διόρθωση: born αντί για setBornTo
+          setBornTo: parseInt(born)
         } 
       })
       
