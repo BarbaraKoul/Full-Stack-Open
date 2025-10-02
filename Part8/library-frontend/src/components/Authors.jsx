@@ -27,19 +27,19 @@ const EDIT_AUTHOR = gql`
 `
 
 const Authors = (props) => {
+
   const [name, setName] = useState('')
   const [born, setBorn] = useState('')
-
   const [editAuthor] = useMutation(EDIT_AUTHOR, {
     refetchQueries: [{ query: GET_AUTHORS }]
   })
+  const result = useQuery(GET_AUTHORS)
+
 
   if (!props.show) {
     return null
   }
 
-  const result = useQuery(GET_AUTHORS)
-  
   if (result.loading) return <div>Loading...</div>
   if (result.error) return <div>Error: {result.error.message}</div>
   

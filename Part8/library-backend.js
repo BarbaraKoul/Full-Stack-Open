@@ -4,7 +4,7 @@ const { GraphQLError } = require('graphql')
 const jwt = require('jsonwebtoken')
 const Book = require('./models/book')
 const Author = require('./models/author')
-const User = require('./models/user')
+const User = require('./models/users')
 require('./mongoose')
 
 const typeDefs = `
